@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CartSave AI — Agentic Checkout Recovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◆</span>
+    <span class="brand-name">CartSave<span class="accent">AI</span></span>
+  </div>
+  <div class="topbar-meta" id="modeMeta">checking agent status…</div>
+</header>
+
+<main class="grid">
+
+  <section class="panel checkout-panel">
+    <h2 class="panel-title">Checkout simulator</h2>
+    <p class="panel-sub">Pick a scenario. This is the drop-off event a real merchant's checkout would emit.</p>
+
+    <div class="product-card">
+      <div class="product-thumb" aria-hidden="true"></div>
+      <div class="product-info">
+        <div class="product-name" id="itemName">Noise-cancelling Headphones</div>
+        <div class="product-price" id="itemPrice">₹18,499</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="cartValue">Cart value (₹)</label>
+      <input type="number" id="cartValue" value="18499" min="100" step="100" />
+    </div>
+
+    <div class="field">
+      <label for="customerType">Customer</label>
+      <select id="customerType">
+        <option value="new">First-time visitor</option>
+        <option value="repeat_high" selected>Repeat customer — high AOV (₹22,000)</option>
+        <option value="repeat_low">Repeat customer — low AOV (₹4,000)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Drop-off trigger</label>
+      <div class="scenario-buttons">
+        <button class="scenario-btn" data-reason="card_declined">💳 Card declined</button>
+        <button class="scenario-btn" data-reason="price_hesitation">⏸ Paused at price</button>
+        <button class="scenario-btn" data-reason="abandoned">🚪 Abandoned, no signal</button>
+      </div>
+    </div>
+
+    <button id="runAgent" class="run-btn">Trigger recovery agent →</button>
+  </section>
+
+  <section class="panel agent-panel">
+    <h2 class="panel-title">Agent reasoning <span class="live-dot" id="liveDot"></span></h2>
+    <p class="panel-sub">The agent's decision trace, streamed live — nothing here is hidden logic.</p>
+
+    <div class="trace-log" id="traceLog">
+      <div class="trace-placeholder">Trigger a scenario to see the agent think.</div>
+    </div>
+
+    <div class="outcome-card" id="outcomeCard" hidden>
+      <div class="outcome-action" id="outcomeAction"></div>
+      <div class="outcome-amounts">
+        <div class="amount-row">
+          <span>Original</span>
+          <span id="amountOriginal" class="strike"></span>
+        </div>
+        <div class="amount-row highlight">
+          <span>Recovered checkout</span>
+          <span id="amountFinal"></span>
+        </div>
+      </div>
+      <a id="payLink" href="#" target="_blank" class="pay-btn">Open payment link ↗</a>
+      <div class="link-mode" id="linkMode"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  Track 1 · AI Growth &amp; Agentic Commerce — prototype for Razorpay AI Builder Internship 2026
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

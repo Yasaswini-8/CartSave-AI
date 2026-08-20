@@ -1,0 +1,16 @@
+{
+  "name": "cartsave-ai",
+  "version": "1.0.0",
+  "description": "Agentic checkout-recovery assistant for Razorpay (Track 1: AI Growth & Agentic Commerce)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "razorpay": "^2.9.4",
+    "@anthropic-ai/sdk": "^0.27.3",
+    "dotenv": "^16.4.5"
+  }
+}
